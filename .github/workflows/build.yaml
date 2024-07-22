@@ -24,7 +24,6 @@ jobs:
           run_install: true
 
       - name: Build
-        env:
         working-directory: .
         run: pnpm build
 
