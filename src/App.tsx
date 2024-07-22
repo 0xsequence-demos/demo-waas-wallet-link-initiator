@@ -3,7 +3,6 @@ import './App.css'
 import sequence from './SequenceEmbeddedWallet'
 import { useSessionHash } from './useSessionHash'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
-import AppleSignin from 'react-apple-signin-auth';
 import sequenceLogo from './assets/sequence-icon.svg'
 import {Button, Card} from '@0xsequence/design-system'
 function CenteredLogo() {
@@ -34,9 +33,6 @@ function WalletLink({ wallet }: any) {
       
       const data = await response.json()
 
-      // setVerificationLink(data.verificationUrl)
-      // setVerificationLink('http://localhost:3006/')
-      // setExternalNonce(data.nonce)
 
       const authProof = await sequence.sessionAuthProof({ 
         nonce: data.nonce, 
@@ -45,13 +41,8 @@ function WalletLink({ wallet }: any) {
 
       window.open(`${'https://0xsequence-demos.github.io/demo-waas-wallet-link/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${1}`)
       
-      // setAuthProofSessionId(authProof.data.sessionId)
-      // setAuthProofSignature(authProof.data.signature)
-
-      // setInProgress(false)
     } catch (e) {
       console.error(e)
-      // setInProgress(false)
     }
   }
   return (

@@ -1,5 +1,5 @@
 {
-  "name": "dungeon-minter-embedded-wallet",
+  "name": "demo-waas-wallet-link-initiator",
   "private": true,
   "version": "0.0.0",
   "type": "module",
