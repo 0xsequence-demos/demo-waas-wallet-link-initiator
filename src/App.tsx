@@ -36,10 +36,10 @@ function WalletLink({ wallet }: any) {
 
       const authProof = await sequence.sessionAuthProof({ 
         nonce: data.nonce, 
-        network: '1'
+        network: '421614'
       })
 
-      window.open(`${'https://0xsequence-demos.github.io/demo-waas-wallet-link/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${1}`)
+      window.open(`${'https://0xsequence-demos.github.io/demo-waas-wallet-link/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${421614}`)
       
     } catch (e) {
       console.error(e)
