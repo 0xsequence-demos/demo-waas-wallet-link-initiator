@@ -23,23 +23,33 @@ function WalletLink({ wallet }: any) {
   const generateEOALink = async () => {
     try {
 
-      const response = await fetch('https://demo-waas-wallet-link-server.tpin.workers.dev/generateNonce', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ walletAddress: wallet })
-      })
+      const apiUrl = 'https://dev-api.sequence.app/rpc/API/GenerateWaaSVerificationURL';
       
-      const data = await response.json()
+      const headers = {
+          'Content-Type': 'application/json'
+      };
 
+      const bodyData = {
+          walletAddress: wallet
+      };
+
+      console.log(bodyData)
+
+      const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(bodyData)
+      })
+
+      const data = await response.json()
 
       const authProof = await sequence.sessionAuthProof({ 
         nonce: data.nonce, 
-        network: '421614'
+        network: '42170'
       })
 
-      window.open(`${'https://0xsequence-demos.github.io/demo-waas-wallet-link/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${421614}`)
+      window.open(`${'https://0xsequence-demos.github.io/demo-waas-wallet-link/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${42170}`)
+      // window.open(`${'http://localhost:3006/demo-waas-wallet-link/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${42170}`)
       
     } catch (e) {
       console.error(e)
@@ -53,7 +63,7 @@ function WalletLink({ wallet }: any) {
       alignItems: 'center',
       width: '100vw',  // Full viewport width
     }}>
-        <h5>Link an EOA Wallet in a New Browser Window</h5>
+        <h5 style={{textAlign: 'center'}}>Link an EOA Wallet in a New Browser Window <br/><span style={{color: 'orange', textAlign:'center'}}>using Arbitrum Nova Signatures</span></h5>
       <div style={{
         display: 'flex',
         alignItems: 'center',
