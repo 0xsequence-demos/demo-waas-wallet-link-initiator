@@ -48,7 +48,7 @@ function WalletLink({ wallet }: any) {
         network: '42170'
       })
 
-      window.open(`${'https://0xsequence-demos.github.io/demo-waas-wallet-link/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${42170}`)
+      window.open(`${'https://demo-waas-wallet-link.pages.dev/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${42170}`)
       // window.open(`${'http://localhost:3006/demo-waas-wallet-link/'}?nonce=${data.nonce}&signature=${authProof.data.signature}&sessionId=${authProof.data.sessionId}&chainId=${42170}`)
       
     } catch (e) {
